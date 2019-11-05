@@ -76,7 +76,7 @@ public class GreatDayPlugin extends CordovaPlugin {
         this.context = callbackContext;
         contextLocationCamera = this.cordova.getActivity().getApplicationContext();
         JSONObject data = args.getJSONObject(0);
-        photoCamera = data.getString("fileName");
+        photoCamera = data.getString("photo");
         isSwap = data.getBoolean("isSwap");
         this.getLocationCamera(contextLocationCamera);
         return true;
@@ -85,7 +85,7 @@ public class GreatDayPlugin extends CordovaPlugin {
         this.context = callbackContext;
         contextLocationCamera = this.cordova.getActivity().getApplicationContext();
         JSONObject data = args.getJSONObject(0);
-        photoCamera = data.getString("fileName");
+        photoCamera = data.getString("photo");
         isSwap = data.getBoolean("isSwap");
         JSONArray dataLoc = data.getJSONArray("data");
         this.getLocationRadiusCamera(contextLocationCamera, data);
