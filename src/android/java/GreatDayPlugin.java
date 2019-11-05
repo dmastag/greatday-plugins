@@ -3,6 +3,7 @@ package com.greatday.plugins;
 import android.app.Activity;
 import android.os.Bundle;
 
+import android.os.Parcelable;
 import android.util.Log;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -60,10 +61,8 @@ public class GreatDayPlugin extends CordovaPlugin {
         this.context = callbackContext;
         Context context = this.cordova.getActivity().getApplicationContext();
         JSONObject data = args.getJSONObject(0);
-        Double work_lat = data.getDouble("work_lat");
-        Double work_lon = data.getDouble("work_lon");
-        Integer work_radius = data.getInt("work_radius");
-        this.getLocationRadius(context, work_lat, work_lon, work_radius);
+        JSONArray dataLoc = data.getJSONArray("data");
+        this.getLocationRadius(context, data);
         return true;
       }
       case "getLocationCamera": {
@@ -88,11 +87,8 @@ public class GreatDayPlugin extends CordovaPlugin {
         JSONObject data = args.getJSONObject(0);
         photoCamera = data.getString("fileName");
         isSwap = data.getBoolean("isSwap");
-        JSONObject dataLocation = data.getJSONObject("location");
-        Double work_lat = dataLocation.getDouble("work_lat");
-        Double work_lon = dataLocation.getDouble("work_lon");
-        Integer work_radius = dataLocation.getInt("work_radius");
-        this.getLocationRadiusCamera(contextLocationCamera, work_lat, work_lon, work_radius);
+        JSONArray dataLoc = data.getJSONArray("data");
+        this.getLocationRadiusCamera(contextLocationCamera, data);
         return true;
       }
     }
@@ -119,11 +115,9 @@ public class GreatDayPlugin extends CordovaPlugin {
   }
 
   //get location with radius
-  private void getLocationRadius(Context context, Double work_lat, Double work_lon, Integer work_radius) {
+  private void getLocationRadius(Context context, JSONObject data) {
     Intent intent = new Intent(context, com.greatday.plugins.activity.location.LocationGreatdayActivity.class);
-    intent.putExtra("work_lat", work_lat);
-    intent.putExtra("work_lon", work_lon);
-    intent.putExtra("work_radius", work_radius);
+    intent.putExtra("data", data.toString());
     cordova.startActivityForResult(this, intent, REQUEST_LOCATION);
   }
 
@@ -133,11 +127,9 @@ public class GreatDayPlugin extends CordovaPlugin {
   }
 
   //  location radius Camera
-  private void getLocationRadiusCamera(Context context, Double work_lat, Double work_lon, Integer work_radius) {
+  private void getLocationRadiusCamera(Context context, JSONObject data) {
     Intent intent = new Intent(context, com.greatday.plugins.activity.location.LocationGreatdayActivity.class);
-    intent.putExtra("work_lat", work_lat);
-    intent.putExtra("work_lon", work_lon);
-    intent.putExtra("work_radius", work_radius);
+    intent.putExtra("data", data.toString());
     cordova.startActivityForResult(this, intent, REQUEST_TO_LOCATION);
   }
 
