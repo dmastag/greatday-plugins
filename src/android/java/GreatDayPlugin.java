@@ -87,7 +87,7 @@ public class GreatDayPlugin extends CordovaPlugin {
           .setMaxSize(maxSize)
           .setQuality(quality)
           .build();
-        this.getLocationAndTakePhoto(options, null, null, null);
+        this.getLocationAndTakePhoto(options, null, null, null, false);
         return true;
       }
       case "getLocationCameraSwap": { // ini dipanggil, act recording
@@ -102,7 +102,7 @@ public class GreatDayPlugin extends CordovaPlugin {
           .setMaxSize(maxSize)
           .setQuality(quality)
           .build();
-        this.getLocationAndTakePhoto(options, null, null, null);
+        this.getLocationAndTakePhoto(options, null, null, null, false);
         return true;
       }
       case "getLocationRadiusCamera": {
@@ -113,14 +113,15 @@ public class GreatDayPlugin extends CordovaPlugin {
         String location = data.getString("location");
         String label1 = data.getString("label1");
         String label2 = data.getString("label2");
+        boolean showAddress = Boolean.parseBoolean(data.getString("show_address"));
 
         CameraPluginOptions options = new CameraPluginOptions.Builder()
-          .setName(photoName)
-          .setDisableFacingBack(true)
-          .setMaxSize(maxSize)
-          .setQuality(quality)
-          .build();
-        this.getLocationAndTakePhoto(options, location, label1, label2);
+                .setName(photoName)
+                .setDisableFacingBack(true)
+                .setMaxSize(maxSize)
+                .setQuality(quality)
+                .build();
+        this.getLocationAndTakePhoto(options, location, label1, label2, showAddress);
         return true;
       }
       case "getLocationRadiusCameraSwap": {
@@ -138,7 +139,7 @@ public class GreatDayPlugin extends CordovaPlugin {
           .setMaxSize(maxSize)
           .setQuality(quality)
           .build();
-        this.getLocationAndTakePhoto(options, location, label1, label2);
+        this.getLocationAndTakePhoto(options, location, label1, label2, false);
         return true;
       }
       case "getLocationLabelLanguage": {
@@ -245,7 +246,7 @@ public class GreatDayPlugin extends CordovaPlugin {
     this.cordova.startActivityForResult(this, intent, LocationPlugin.REQUEST);
   }
 
-  private void getLocationAndTakePhoto(CameraPluginOptions cameraOption, String location, String message1, String message2) throws JSONException {
+  private void getLocationAndTakePhoto(CameraPluginOptions cameraOption, String location, String message1, String message2, boolean showAddress) throws JSONException {
     JSONObject jsonLocation = new JSONObject();
     CameraPluginListener cameraPluginListener = new CameraPluginListener() {
       @Override
@@ -271,7 +272,11 @@ public class GreatDayPlugin extends CordovaPlugin {
       @Override
       public void onLocationRetrieved(Double lon, Double lat, Boolean isMock) {
         try {
-          String address = locationPlugin.getCompleteAddress(lon, lat);
+          String address = "";
+          if(showAddress == true) {
+            address = locationPlugin.getCompleteAddress(lat, lon);
+          }
+
           jsonLocation.put("latitude", String.valueOf(lat));
           jsonLocation.put("longitude", String.valueOf(lon));
           jsonLocation.put("address", address);

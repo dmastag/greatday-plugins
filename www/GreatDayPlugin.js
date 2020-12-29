@@ -104,7 +104,7 @@ module.exports = {
    * @param {*} onSuccess 
    * @param {*} onError 
    */
-  getLocationRadiusCamera: function (photoName, quality, maxSize, location, label1, label2, onSuccess, onError) {
+  getLocationRadiusCamera: function (photoName, quality, maxSize, location, label1, label2, showAddress, onSuccess, onError) {
     var data = [];
     data.push({
       photoName: photoName,
@@ -113,6 +113,7 @@ module.exports = {
       max_size: maxSize,
       label1: label1,
       label2: label2,
+      show_address: showAddress
     });
 
     exec(onSuccess, onError, 'GreatDayPlugin', 'getLocationRadiusCamera', data);
