@@ -34,6 +34,8 @@
                 android:name="com.greatday.plugins.activity.location.LocationGreatdayActivity"
                 android:label="Location"
                 android:theme="@style/Theme.AppCompat.Light" />
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
         </config-file>
         <!-- <config-file target="AndroidManifest.xml" parent="/*">
