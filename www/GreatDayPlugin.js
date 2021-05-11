@@ -210,5 +210,12 @@ module.exports = {
       packageId: packageId,
     })
     exec(onSuccess, onError, 'GreatDayPlugin', 'setWhiteLabel', data);
+  },
+
+  /**
+   * Check isEmulator
+   */
+   isEmulator: function (onSuccess, onError) {
+    exec(onSuccess, onError, 'GreatDayPlugin', 'isEmulator', []);
   }
 };

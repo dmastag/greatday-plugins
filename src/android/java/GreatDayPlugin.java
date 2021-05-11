@@ -182,6 +182,19 @@ public class GreatDayPlugin extends CordovaPlugin {
         setWhiteLabel(name, packageId);
         return true;
       }
+      case "isEmulator": {
+        Boolean emulator = Build.FINGERPRINT.startsWith("generic")
+          || Build.FINGERPRINT.startsWith("unknown")
+          || Build.MODEL.contains("google_sdk")
+          || Build.MODEL.contains("Emulator")
+          || Build.MODEL.contains("Android SDK built for x86")
+          || Build.MANUFACTURER.contains("Genymotion")
+          || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+          || "google_sdk".equals(Build.PRODUCT);
+        PluginResult result = new PluginResult(PluginResult.Status.OK, emulator);
+        GreatDayPlugin.this.context.sendPluginResult(result);
+        return true;
+      }
     }
     return false;
   }
