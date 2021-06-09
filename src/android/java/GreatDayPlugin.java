@@ -196,6 +196,14 @@ public class GreatDayPlugin extends CordovaPlugin {
         GreatDayPlugin.this.context.sendPluginResult(result);
         return true;
       }
+      case "isDevelopmentSettingsEnabled": {
+        final boolean settingEnabled = Settings.Global.getInt(GreatDayPlugin.this.cordova.getActivity().getContentResolver(),
+          Settings.Global.DEVELOPMENT_SETTINGS_ENABLED,
+          Build.TYPE.equals("eng") ? 1 : 0) != 0;
+        PluginResult result = new PluginResult(PluginResult.Status.OK, settingEnabled);
+        GreatDayPlugin.this.context.sendPluginResult(result);
+        return true;
+      }
     }
     return false;
   }
