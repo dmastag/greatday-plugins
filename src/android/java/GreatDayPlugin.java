@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.provider.Settings;
 
 import com.greatdayhr.videorecruitment.VideoRecruitmentPlugin;
 import com.greatdayhr.videorecruitment.VideoRecruitmentPluginListener;
