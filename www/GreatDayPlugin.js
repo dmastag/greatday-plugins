@@ -217,5 +217,12 @@ module.exports = {
    */
    isEmulator: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'isEmulator', []);
+  },
+  
+  /**
+   * Check Developer Options
+   */
+   isDevelopmentSettingsEnabled: function (onSuccess, onError) {
+    exec(onSuccess, onError, 'GreatDayPlugin', 'isDevelopmentSettingsEnabled', []);
   }
 };
