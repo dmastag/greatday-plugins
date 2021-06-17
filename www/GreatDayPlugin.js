@@ -224,5 +224,12 @@ module.exports = {
    */
    isDevelopmentSettingsEnabled: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'isDevelopmentSettingsEnabled', []);
+  },
+  
+  /**
+   * Open Developer Options
+   */
+   openDeveloperOptions: function (onSuccess, onError) {
+    exec(onSuccess, onError, 'GreatDayPlugin', 'openDeveloperOptions', []);
   }
 };
