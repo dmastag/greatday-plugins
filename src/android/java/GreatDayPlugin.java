@@ -206,10 +206,9 @@ public class GreatDayPlugin extends CordovaPlugin {
         return true;
       }
       case "openDeveloperOptions": {
-        Context context = GreatDayPlugin.this.cordova.getActivity().getApplicationContext();
         Intent i = new Intent(android.provider.Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i);
+        GreatDayPlugin.this.cordova.getActivity().getApplicationContext().startActivity(i);
         PluginResult result = new PluginResult(PluginResult.Status.OK, true);
         GreatDayPlugin.this.context.sendPluginResult(result);
         return true;
