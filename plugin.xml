@@ -57,4 +57,16 @@
             src="src/android/build-extras.gradle"
             type="gradleReference" />
     </platform>
+    <platform name="ios">
+        <config-file 
+             parent="/*" 
+             target="config.xml">
+            <feature name="GreatDayPlugin">
+                <param 
+                       name="ios-package" 
+                       value="com.greatday.plugins.GreatDayPlugin" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/BlurredSnapshot.m"/>
+    </platform>
 </plugin>
