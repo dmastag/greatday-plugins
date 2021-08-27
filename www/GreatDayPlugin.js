@@ -245,5 +245,19 @@ module.exports = {
    */
    removeBlurredSnapshot: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'removeBlurredSnapshot', []);
+  },
+  
+  /**
+   * Add Blurred Snapshot
+   */
+   addBlurredSnapshot: function (onSuccess, onError) {
+    exec(onSuccess, onError, 'GreatDayPlugin', 'addBlurredSnapshot', []);
+  },
+  
+  /**
+   * Add Remove Snapshot
+   */
+   removeBlurredSnapshot: function (onSuccess, onError) {
+    exec(onSuccess, onError, 'GreatDayPlugin', 'removeBlurredSnapshot', []);
   }
 };
