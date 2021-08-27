@@ -67,6 +67,6 @@
                        value="com.greatday.plugins.GreatDayPlugin" />
             </feature>
         </config-file>
-        <source-file src="src/ios/BlurredSnapshot.m"/>
+        <source-file src="src/ios/GreatDayPlugin.m"/>
     </platform>
 </plugin>
