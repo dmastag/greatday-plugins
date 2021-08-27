@@ -64,7 +64,7 @@
             <feature name="GreatDayPlugin">
                 <param 
                        name="ios-package" 
-                       value="com.greatday.plugins.GreatDayPlugin" />
+                       value="GreatDayPlugin" />
             </feature>
         </config-file>
         <source-file src="src/ios/GreatDayPlugin.m"/>
