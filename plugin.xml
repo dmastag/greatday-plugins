@@ -67,6 +67,7 @@
                        value="GreatDayPlugin" />
             </feature>
         </config-file>
+        <source-file src="src/ios/GreatDayPlugin.h"/>
         <source-file src="src/ios/GreatDayPlugin.m"/>
     </platform>
 </plugin>
