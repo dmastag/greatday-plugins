@@ -1,27 +1,76 @@
+#import "GreatDayPlugin.h"
 #import "AppDelegate.h"
 
-@interface AppDelegate (GreatDayPlugin) {}
+@implementation GreatDayPlugin
 
-- (void)addBlurredSnapshot:(CDVInvokedUrlCommand*)command;
-- (void)removeBlurredSnapshot:(CDVInvokedUrlCommand*)command;
+// Private static reference
+static GreatDayPlugin* greatDayPlugin;
 
-@end
+NSString *message;
 
-char status = 'o';
+// Public static method
++ (GreatDayPlugin*) greatDayPlugin {
+    return greatDayPlugin;
+}
 
-@implementation AppDelegate (GreatDayPlugin)
+
+// implement CDVPlugin delegate
+- (void)pluginInitialize {
+    greatDayPlugin = self;
+    message = @"BlurredSnapshot OFF";
+}
+
+
+// A public instance method
+- (void)logMessage: (NSString*)msg
+{
+    NSLog(@"MyPlugin: 0 %@", msg);
+    message = msg;
+}
 
 - (void)addBlurredSnapshot:(CDVInvokedUrlCommand*)command {
-    status = 'a';
+    CDVPluginResult* pluginResult = nil;
+    
+    [GreatDayPlugin.greatDayPlugin logMessage:@"BlurredSnapshot ON"];
+    
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void)removeBlurredSnapshot:(CDVInvokedUrlCommand*)command {
-    status = 'o';
+    CDVPluginResult* pluginResult = nil;
+    
+    [GreatDayPlugin.greatDayPlugin logMessage:@"BlurredSnapshot OFF"];
+    
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+// A public instance method
+- (NSString *) getMessage{
+    
+    NSLog(@"MyPlugin: 1 %@", message);
+
+    if ( message == nil ) {
+        message = @"BlurredSnapshot OFF";
+    }
+    return message;
+}
+
+@end
+
+@interface AppDelegate (GreatDayPlugin) {}
+
+@end
+
+@implementation AppDelegate (GreatDayPlugin)
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    if(status != 'o') {
+    
+    NSString *msg = [GreatDayPlugin.greatDayPlugin getMessage];
+    NSLog(@"MyPlugin: 2 %@", msg);
+    
+    if([msg isEqualToString:@"BlurredSnapshot ON"]) {
         self.window.backgroundColor = [UIColor clearColor];
 
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
