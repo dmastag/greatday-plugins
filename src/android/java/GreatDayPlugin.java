@@ -214,13 +214,8 @@ public class GreatDayPlugin extends CordovaPlugin {
         return true;
       }
       case "setUserAgent": {
-        preferences.set("OverrideUserAgent", "Greatday HR");
-        PluginResult result = new PluginResult(PluginResult.Status.OK, true);
-        GreatDayPlugin.this.context.sendPluginResult(result);
-        return true;
-      }
-      case "removeUserAgent": {
-        preferences.set("OverrideUserAgent", null);
+        String nameUserAgent = args.getString(0);
+        preferences.set("OverrideUserAgent", nameUserAgent);
         PluginResult result = new PluginResult(PluginResult.Status.OK, true);
         GreatDayPlugin.this.context.sendPluginResult(result);
         return true;
