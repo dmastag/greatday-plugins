@@ -259,5 +259,12 @@ module.exports = {
    */
    removeBlurredSnapshot: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'removeBlurredSnapshot', []);
+  },
+  
+  /**
+   * Set User Agent
+   */
+   setUserAgent: function (name, onSuccess, onError) {
+    exec(onSuccess, onError, 'GreatDayPlugin', 'setUserAgent', [name]);
   }
 };
