@@ -46,6 +46,19 @@ NSString *message;
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void)setUserAgent: (CDVInvokedUrlCommand*)command
+{
+    id newUserAgent = [command argumentAtIndex:0];
+    
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:newUserAgent, @"UserAgent", nil];
+     [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+    
+    NSString* callbackId = command.callbackId;
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:newUserAgent];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
+}
+
+
 // A public instance method
 - (NSString *) getMessage{
     
