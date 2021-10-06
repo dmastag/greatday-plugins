@@ -10,5 +10,6 @@
 - (NSString *) getMessage;
 - (void)addBlurredSnapshot:(CDVInvokedUrlCommand*)command;
 - (void)removeBlurredSnapshot:(CDVInvokedUrlCommand*)command;
+- (void)setUserAgent:(CDVInvokedUrlCommand*)command;
 
 @end
