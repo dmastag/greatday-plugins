@@ -269,9 +269,23 @@ module.exports = {
   },
 
   /**
+   * Set swiftTest
+   */
+   swiftTest: function (message, onSuccess, onError) {
+    exec(onSuccess, onError, 'ISSWrapper', 'swiftTest', [message]);
+  },
+
+  /**
    * Set isReverseEngineeringDetected
    */
   isReverseEngineeringDetected: function (onSuccess, onError) {
     exec(onSuccess, onError, 'ISSWrapper', 'isReverseEngineeringDetected', []);
+  },
+
+  /**
+   * Set isReverseEngineeringDetected
+   */
+   isTampered: function (bundle, onSuccess, onError) {
+    exec(onSuccess, onError, 'ISSWrapper', 'isTampered', [bundle]);
   }
 };

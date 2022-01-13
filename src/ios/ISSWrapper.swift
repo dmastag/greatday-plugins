@@ -2,19 +2,20 @@ import Foundation
 
 @objc(ISSWrapper)
 public class ISSWrapper : CDVPlugin {
-    @objc(echo:)
-  func echo(_ command: CDVInvokedUrlCommand) {
-    let echo = command.argument(at: 0) as! String?
-    let pluginResult:CDVPluginResult
+    
+    @objc(swiftTest:)
+    func swiftTest(_ command: CDVInvokedUrlCommand) {
+        let echo = command.argument(at: 0) as! String?
+        let pluginResult:CDVPluginResult
 
-    if echo != nil && echo!.count > 0 {
-        pluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: echo!)
-    } else {
-        pluginResult = CDVPluginResult.init(status: CDVCommandStatus_ERROR)
+        if echo != nil && echo!.count > 0 {
+            pluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: echo!)
+        } else {
+            pluginResult = CDVPluginResult.init(status: CDVCommandStatus_ERROR)
+        }
+
+        self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
     }
-
-    self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
-  }
     
     @objc(isReverseEngineeringDetected:)
     func isReverseEngineeringDetected(command: CDVInvokedUrlCommand) {
@@ -69,10 +70,9 @@ public class ISSWrapper : CDVPlugin {
     @objc(isTampered:)
     func isTampered(command: CDVInvokedUrlCommand) {
         var isTampered:Bool
+        let bundle = command.arguments[0] as? String ?? "Error"
         
-        if IOSSecuritySuite.amITampered([.bundleID("biz.securing.FrameworkClientApp"),
-            .mobileProvision("2976c70b56e9ae1e2c8e8b231bf6b0cff12bbbd0a593f21846d9a004dd181be3"),
-            .machO("IOSSecuritySuite", "6d8d460b9a4ee6c0f378e30f137cebaf2ce12bf31a2eef3729c36889158aa7fc")]).result {
+        if IOSSecuritySuite.amITampered([.bundleID(bundle)]).result {
             isTampered = true
         }
         else {
