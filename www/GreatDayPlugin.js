@@ -266,5 +266,12 @@ module.exports = {
    */
    setUserAgent: function (name, onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'setUserAgent', [name]);
+  },
+  
+  /**
+   * Set coolMethod
+   */
+   coolMethod: function (onSuccess, onError) {
+    exec(onSuccess, onError, 'PluginSwiftDemo', 'coolMethod', []);
   }
 };
