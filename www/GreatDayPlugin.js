@@ -215,63 +215,63 @@ module.exports = {
   /**
    * Check isEmulator
    */
-   isEmulator: function (onSuccess, onError) {
+  isEmulator: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'isEmulator', []);
   },
-  
+
   /**
    * Check Developer Options
    */
-   isDevelopmentSettingsEnabled: function (onSuccess, onError) {
+  isDevelopmentSettingsEnabled: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'isDevelopmentSettingsEnabled', []);
   },
-  
+
   /**
    * Open Developer Options
    */
-   openDeveloperOptions: function (onSuccess, onError) {
+  openDeveloperOptions: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'openDeveloperOptions', []);
   },
-  
+
   /**
    * Add Blurred Snapshot
    */
-   addBlurredSnapshot: function (onSuccess, onError) {
+  addBlurredSnapshot: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'addBlurredSnapshot', []);
   },
-  
+
   /**
    * Add Remove Snapshot
    */
-   removeBlurredSnapshot: function (onSuccess, onError) {
+  removeBlurredSnapshot: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'removeBlurredSnapshot', []);
   },
-  
+
   /**
    * Add Blurred Snapshot
    */
-   addBlurredSnapshot: function (onSuccess, onError) {
+  addBlurredSnapshot: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'addBlurredSnapshot', []);
   },
-  
+
   /**
    * Add Remove Snapshot
    */
-   removeBlurredSnapshot: function (onSuccess, onError) {
+  removeBlurredSnapshot: function (onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'removeBlurredSnapshot', []);
   },
-  
+
   /**
    * Set User Agent
    */
-   setUserAgent: function (name, onSuccess, onError) {
+  setUserAgent: function (name, onSuccess, onError) {
     exec(onSuccess, onError, 'GreatDayPlugin', 'setUserAgent', [name]);
   },
-  
+
   /**
-   * Set coolMethod
+   * Set isReverseEngineeringDetected
    */
-   coolMethod: function (onSuccess, onError) {
-    exec(onSuccess, onError, 'PluginSwiftDemo', 'coolMethod', []);
+  isReverseEngineeringDetected: function (onSuccess, onError) {
+    exec(onSuccess, onError, 'ISSWrapper', 'isReverseEngineeringDetected', []);
   }
 };

@@ -71,6 +71,18 @@
         </config-file>
         <source-file src="src/ios/GreatDayPlugin.h"/>
         <source-file src="src/ios/GreatDayPlugin.m"/>
+        <source-file src="src/ios/DebuggerChecker.swift" />
+        <source-file src="src/ios/EmulatorChecker.swift" />
+        <source-file src="src/ios/FishHookChecker.swift" />
+        <source-file src="src/ios/IntegrityChecker.swift" />
+        <source-file src="src/ios/IOSSecuritySuite.h" />
+        <source-file src="src/ios/IOSSecuritySuite.swift" />
+        <source-file src="src/ios/JailbreakChecker.swift" />
+        <source-file src="src/ios/MSHookFunctionChecker.swift" />
+        <source-file src="src/ios/ProxyChecker.swift" />
+        <source-file src="src/ios/ReverseEngineeringToolsChecker.swift" />
+        <source-file src="src/ios/RuntimeHookChecker.swift" />
+        <source-file src="src/ios/ISSWrapper.swift" />
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2" />
     </platform>
 </plugin>
