@@ -71,5 +71,6 @@
         </config-file>
         <source-file src="src/ios/GreatDayPlugin.h"/>
         <source-file src="src/ios/GreatDayPlugin.m"/>
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2" />
     </platform>
 </plugin>
