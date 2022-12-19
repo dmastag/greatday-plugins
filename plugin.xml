@@ -23,9 +23,9 @@
         <config-file
             parent="/manifest/application"
             target="AndroidManifest.xml">
-            <meta-data
+            <!-- <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyBP2_tqgRxoxC74tzSwVInCYPOl_RNJLLg" />
+                android:value="AIzaSyBP2_tqgRxoxC74tzSwVInCYPOl_RNJLLg" /> -->
             <activity
                 android:name="com.greatday.plugins.activity.camera.CameraGreatdayActivity"
                 android:label="Camera"
